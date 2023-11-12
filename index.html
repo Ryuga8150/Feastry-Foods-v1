@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Feastry Restaurant Website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      type="module"
+      defer
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      type="module"
+      defer
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <title>Feastry- Restaurant & Bar</title>
+    <script type="module" defer src="./js/controller.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <a href="#">
+          <img
+            alt="Feastry logo"
+            class="logo"
+            src="images/logos/My project.png"
+          />
+        </a>
+        <nav class="main-nav">
+          <ul class="main-nav-list">
+            <li>
+              <a class="main-nav-link" href="#">Home</a>
+            </li>
+            <li>
+              <a class="main-nav-link" href="#">About us</a>
+            </li>
+            <li>
+              <a class="main-nav-link" href="#">Menu</a>
+            </li>
+            <li>
+              <a class="main-nav-link" href="" id="bookingBtn">Bookings</a>
+            </li>
+            <li>
+              <a class="main-nav-link" href="#">Blogs</a>
+            </li>
+            <li>
+              <a class="main-nav-link" href="#">FAQs</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section class="section-hero">
+          <div class="hero grid grid-2-cols">
+            <div class="hero-img-box">
+              <img
+                src="images/pics/hero-bkg-3.png"
+                alt="hero"
+                class="hero-img"
+              />
+            </div>
+            <div class="hero-text-box">
+              <h2 class="hero-heading">Extraodinary FOOD COMES FIRST</h2>
+              <p class="hero-text">
+                Savour Every Moment with our wide varities of dishes and
+                cocktails handpicked just for you...
+              </p>
+              <div class="flex">
+                <a href="#" class="btn devour-btn margin-rt-sm"
+                  >Let's Devour!!!</a
+                >
+                <a href="#" class="btn learn-btn">Learn More &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section-about">
+          <div class="about-us grid grid-1-cols">
+            <div class="about-img-box">
+              <img src="images/pics/about-bkg.jpg" class="about-img" />
+            </div>
+          </div>
+          <div class="about-text-box">
+            <h2 class="about-heading">Our Story</h2>
+            <p class="about-text">
+              Do right and far exceed expectations daily. We do the right thing
+              and lead by putting people first. Each and every connection with
+              our team, guests and shareholders is our opportunity to create an
+              experience that FEEDs – Far Exceeds Expectations Daily – and show
+              how much we care
+            </p>
+          </div>
+        </section>
+        <!-- <section class="section-partners">
+        <div class="partners">
+          <div class="lt-partner-img-box">
+            <img
+              src="images/pinterest.png"
+              class="img-partner lt-partner-img"
+            />
+          </div>
+          <div class="mask ctr-partner-img-box">
+            <img src="images/zomato.png" class="img-partner ctr-partner-img" />
+          </div>
+          <div class="rt-partner-img-box">
+            <img
+              src="images/Swiggy-logo.png"
+              class="img-partner rt-partner-img"
+            />
+          </div>
+        </div>
+      </section> -->
+        <section class="section-menu">
+          <div class="menu flex ctr-flex">
+            <h2 class="menu-subheading">Menu</h2>
+            <div class="meals flex">
+              <span class="meal meal-active" data-point="0">All</span>
+              <!-- <span class="meal">Breakfast</span>
+            <span class="meal">Lunch</span>
+            <span class="meal">Dinner</span> -->
+              <span class="meal" data-point="1">Desserts</span>
+              <span class="meal" data-point="2">Drinks</span>
+            </div>
+            <div class="cards grid grid-3-cols">
+              <div class="card">
+                <img src="images/pics/meal-1.jpg" class="card-img" alt="" />
+                <div class="card-content">
+                  <p class="card-title">Avocado Salad</p>
+                  <div class="card-tags">
+                    <span class="tag tag--vegan">Vegan</span>
+                    <span class="tag tag--keto">Keto</span>
+                    <span class="tag tag--vegetarian">Veg</span>
+                    <span class="tag tag--popular">Popular</span>
+                  </div>
+                  <ul class="card-attributes flex card-flex">
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Cook Time: </span>10
+                        min</span
+                      >
+                    </li>
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Price: </span
+                        >450</span
+                      >
+                    </li>
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Servings: </span
+                        >2</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <button class="btn-AddToCart">Add To Cart</button>
+              </div>
+              <!---->
+              <div class="card">
+                <img src="images/pics/meal-2.jpg" class="card-img" alt="" />
+                <div class="card-content">
+                  <!-- <div class="card-tags">
+                  <span class="tag tag--vegan">Vegan</span>
+                  <span class="tag tag--paleo">Paleo</span>
+                </div> -->
+                  <p class="card-title">Shrimp Scampi</p>
+                  <ul class="card-attributes flex card-flex">
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Cook Time: </span>10
+                        min</span
+                      >
+                    </li>
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Price: </span
+                        >450</span
+                      >
+                    </li>
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Servings: </span
+                        >2</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <button class="btn-AddToCart">Add To Cart</button>
+              </div>
+              <!---->
+              <div class="card">
+                <img src="images/pics/meal-3.jpg" class="card-img" alt="" />
+                <div class="card-content">
+                  <!-- <div class="card-tags">
+                  <span class="tag tag--vegan">Vegan</span>
+                  <span class="tag tag--paleo">Paleo</span>
+                </div> -->
+                  <p class="card-title">Baked Snapper</p>
+                  <ul class="card-attributes flex card-flex">
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Cook Time: </span>10
+                        min</span
+                      >
+                    </li>
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Price: </span
+                        >450</span
+                      >
+                    </li>
+                    <li class="card-attribute">
+                      <span
+                        ><span class="bold-card-attribute">Servings: </span
+                        >2</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <button class="btn-AddToCart">Add To Cart</button>
+              </div>
+              <!---->
+            </div>
+          </div>
+        </section>
+        <!-- Bookings Window -->
+        <section class="add-bookings-window hidden">
+          <form class="upload">
+            <button class="btn--close-modal">&times;</button>
+            <h3 class="upload__heading">Bookings data</h3>
+            <div class="form grid grid-2-cols">
+              <div class="labels">
+                <label>Name(Person/Company)</label>
+                <input
+                  placeholder="Leo DelaCruse"
+                  required
+                  name="title"
+                  type="text"
+                  class="form-data"
+                />
+              </div>
+              <div class="labels">
+                <label>Email</label>
+                <input
+                  placeholder="Leo1254@gmail.com"
+                  required
+                  name="email"
+                  type="email"
+                  class="form-data"
+                />
+              </div>
+              <div class="labels">
+                <label>Gathering</label>
+                <input
+                  placeholder="150"
+                  required
+                  name="gathering"
+                  type="number"
+                  class="form-data"
+                />
+              </div>
+              <div class="labels">
+                <label>Contact Number</label>
+                <input
+                  placeholder="9584412545"
+                  required
+                  name="phone"
+                  type="tel"
+                  class="form-data"
+                />
+              </div>
+              <div class="labels select">
+                <label for="serveTime">Choose Serve Time:</label>
+
+                <select name="serveTime" id="serveTime" class="form-data">
+                  <option value="">Choose An Option</option>
+                  <option value="brunch">Brunch</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="snacks">Snacks & Drinks</option>
+                  <option value="dinner">Dinner</option>
+                </select>
+              </div>
+              <div class="labels">
+                <label>Address</label>
+                <textarea class="form-data"></textarea>
+              </div>
+            </div>
+
+            <button class="btn upload__btn">
+              <ion-icon
+                name="cloud-upload-outline"
+                class="upload-btn-icon"
+              ></ion-icon>
+              <span>Upload</span>
+            </button>
+          </form>
+        </section>
+        <section class="section-reviews">
+          <div class="reviews grid grid-3-cols">
+            <div class="review-card">
+              <div>
+                <h3 class="review-subheading">Rating</h3>
+                <div class="star-box flex">
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <!--
+                    For half Outline 
+                    <ion-icon name="star-half-outline"></ion-icon>
+                  -->
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon
+                    name="star-half-outline"
+                    class="star-icon"
+                  ></ion-icon>
+                  <ion-icon name="star-outline" class="star-icon"></ion-icon>
+                </div>
+              </div>
+              <p class="review-description">
+                This cozy restaurant has left the best impressions! Hospitable
+                hosts, delicious dishes, beautiful presentation, wide wine list
+                and wonderful dessert. I recommend to everyone! I would like to
+                come back here again and again.
+              </p>
+              <div>
+                <span class="signature">Rachelle Brandy</span>
+                <span class="customer-name">Customer Name</span>
+              </div>
+              <img src="images/pics/quotations.png" class="quotation-img" />
+              <img src="images/users/user-1.jpg" class="customer-img" />
+            </div>
+            <div class="review-card">
+              <div>
+                <h3 class="review-subheading">Rating</h3>
+                <div class="star-box flex">
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <!--
+                    For half Outline 
+                    <ion-icon name="star-half-outline"></ion-icon>
+                  -->
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon
+                    name="star-half-outline"
+                    class="star-icon"
+                  ></ion-icon>
+                </div>
+              </div>
+              <p class="review-description">
+                First time in Feastry and YOU have to go! It’s the cutest little
+                spot with amazing food. The ( Feastry) is to die for.
+              </p>
+              <div>
+                <span class="signature">Ian Dooley</span>
+                <span class="customer-name">Customer Name</span>
+              </div>
+              <img src="images/pics/quotations.png" class="quotation-img" />
+              <img src="images/users/user-2.jpg" class="customer-img" />
+            </div>
+            <div class="review-card">
+              <div>
+                <h3 class="review-subheading">Rating</h3>
+                <div class="star-box flex">
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <!--
+                  For half Outline 
+                  <ion-icon name="star-half-outline"></ion-icon>
+                 -->
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon name="star" class="star-icon"></ion-icon>
+                  <ion-icon
+                    name="star-half-outline"
+                    class="star-icon"
+                  ></ion-icon>
+                </div>
+              </div>
+              <p class="review-description">
+                When we think about celebrations, Feastry is always our first
+                option and it never disappoints.
+              </p>
+              <div>
+                <span class="signature">Joseph Gonzalez</span>
+                <span class="customer-name">Customer Name</span>
+              </div>
+              <img src="images/pics/quotations.png" class="quotation-img" />
+              <img src="images/users/user-3.jpg" class="customer-img" />
+            </div>
+          </div>
+        </section>
+        <section class="section-contactUs">
+          <div class="contact-us grid grid-2-cols">
+            <div class="contact-info-box">
+              <h2 class="contactUs-heading">Contact Us</h2>
+              <div class="contact-details flex">
+                <div class="icon-info-box flex">
+                  <ion-icon name="location-outline"></ion-icon>
+                  <span>123 Main St. Anytown, USA 12345</span>
+                </div>
+                <div class="icon-info-box flex">
+                  <ion-icon name="call-outline"></ion-icon>
+                  <span>123-456-7890</span>
+                </div>
+                <div class="icon-info-box flex">
+                  <ion-icon name="mail-outline"></ion-icon>
+                  <span>FeastryFoods@gmail.com</span>
+                </div>
+                <div class="icon-info-box flex">
+                  <ion-icon name="globe-outline"></ion-icon>
+                  <span>FeastryFoods@gmail.com</span>
+                </div>
+              </div>
+            </div>
+            <div class="contact-img-box">
+              <img src="images/pics/contact-svg.svg" />
+            </div>
+          </div>
+        </section>
+        <section class="section-cart hidden">
+          <div class="cart">
+            <button class="cartBtn--close-modal">&times;</button>
+            <h2 class="cart-subheading">MY CART</h2>
+            <div class="cart-info grid grid-1-cols">
+              <div class="about-cols grid">
+                <span></span>
+                <span>Item</span>
+                <span>Quantity</span>
+                <span>Cost</span>
+              </div>
+              <div class="cart-cards flex">
+                <div class="cart-card grid">
+                  <img src="images/pics/meal-1.jpg" class="cart-item-img" />
+                  <div class="cart-item flex">
+                    <span>Avocado Salad served with</span>
+                  </div>
+                  <div class="card-item-quantity flex">
+                    <ion-icon
+                      name="add-outline"
+                      class="quantity-btn left-btn"
+                    ></ion-icon>
+                    <span class="quantity">3</span>
+                    <ion-icon
+                      name="remove-outline"
+                      class="quantity-btn right-btn"
+                    ></ion-icon>
+                  </div>
+                  <div class="card-cost">
+                    <span class="cost">450</span>
+                  </div>
+                  <div class="checkbox-box">
+                    <input type="checkbox" name="checkbox" class="checkbox" />
+                  </div>
+                </div>
+                <div class="cart-card grid">
+                  <img src="images/pics/meal-2.jpg" class="cart-item-img" />
+                  <div class="cart-item flex">
+                    <span>Shrimp Scampi</span>
+                  </div>
+                  <div class="card-item-quantity flex">
+                    <ion-icon
+                      name="add-outline"
+                      class="quantity-btn left-btn"
+                    ></ion-icon>
+                    <span class="quantity">3</span>
+                    <ion-icon
+                      name="remove-outline"
+                      class="quantity-btn right-btn"
+                    ></ion-icon>
+                  </div>
+                  <div class="card-cost">
+                    <span class="cost">450</span>
+                  </div>
+                  <div class="checkbox-box">
+                    <input type="checkbox" name="checkbox" class="checkbox" />
+                  </div>
+                </div>
+                <div class="cart-card grid">
+                  <img src="images/pics/meal-3.jpg" class="cart-item-img" />
+                  <div class="cart-item flex">
+                    <span>Baked Snapper</span>
+                  </div>
+                  <div class="card-item-quantity flex">
+                    <ion-icon
+                      name="add-outline"
+                      class="quantity-btn left-btn"
+                    ></ion-icon>
+                    <span class="quantity">3</span>
+                    <ion-icon
+                      name="remove-outline"
+                      class="quantity-btn right-btn"
+                    ></ion-icon>
+                  </div>
+                  <div class="card-cost">
+                    <span class="cost">450</span>
+                  </div>
+                  <div class="checkbox-box">
+                    <input type="checkbox" name="checkbox" class="checkbox" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="total flex">
+                  <span>Total</span>
+                  <span class="totalPrice">$1350</span>
+                </div>
+              </div>
+              <div>
+                <button class="place-order-btn">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="order-box hidden">
+          <span class="order-text">Order Placed</span>
+        </div>
+      </main>
+
+      <footer>
+        <div class="grid grid-1-cols">
+          <div class="logo-col flex">
+            <a href="#" class="footer-logo">
+              <span>FEASTRY</span>
+            </a>
+
+            <ul class="social-links flex">
+              <li>
+                <a class="footer-link" href="#"
+                  ><ion-icon
+                    class="social-icon"
+                    name="logo-instagram"
+                  ></ion-icon
+                ></a>
+              </li>
+              <li>
+                <a class="footer-link" href="#"
+                  ><ion-icon class="social-icon" name="logo-facebook"></ion-icon
+                ></a>
+              </li>
+              <li>
+                <a class="footer-link" href="#"
+                  ><ion-icon class="social-icon" name="logo-twitter"></ion-icon
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <p class="copyright">
+            Copyright &copy; <span class="year">2027</span> by Feastry Foods,
+            Inc. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      <ion-icon name="cart-outline" class="cart-logo"></ion-icon>
+    </div>
+  </body>
+  <script type="module" src="/main.js"></script>
+</html>
