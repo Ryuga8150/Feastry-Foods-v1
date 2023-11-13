@@ -101,7 +101,7 @@ html {
 }
 
 body {
-  font-family: '', sans-serif;
+  font-family: "", sans-serif;
   color: #262626;
   line-height: 1;
   font-weight: 400;
@@ -347,6 +347,7 @@ ul {
 }
 .meals {
   gap: 1.2rem;
+  cursor: pointer;
 }
 
 .cards {
@@ -573,10 +574,8 @@ ul {
 .section-reviews {
   padding: 4.8rem 6.4rem 9.6rem 6.4rem;
 }
-.background-correct {
-}
 .reviews {
-  padding: 2.4rem;
+  padding: 3.2rem 2.4rem;
   background-color: #1e1e1e;
   /* height: 30rem; */
   column-gap: 1.2rem;
@@ -592,8 +591,39 @@ ul {
 
   background-color: #18181b;
   padding: 4.8rem 1.2rem 1.2rem 1.2rem;
+
+  transform: scale(0.8);
+
+  transition: tranform 1s ease-out;
 }
 
+.active {
+  animation: enlarge 1s ease-out;
+  animation-fill-mode: forwards;
+  box-shadow: 2px 5px 40px 0px rgba(156, 155, 155, 0.4);
+}
+
+@keyframes enlarge {
+  0% {
+    transform: scale(0.8);
+  }
+
+  30% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
@@ -669,6 +699,7 @@ ul {
   color: #f6f6f6;
   border: none;
   border-radius: 9px;
+  cursor: pointer;
 }
 .btn-AddToCart:hover {
   color: #db4f0a;
@@ -731,6 +762,7 @@ footer {
 .logo-col {
   gap: 1.2rem;
   justify-content: center;
+  align-items: center;
   margin-bottom: 2.4rem;
 }
 .footer-logo,
@@ -742,12 +774,19 @@ footer {
   font-family: sumac-regular;
   font-size: 2.4rem;
   letter-spacing: 0.2rem;
-  align-items: center;
+  align-self: center;
+  flex-grow: 0;
+  padding-bottom: 0.33rem;
 }
 .social-links {
   font-size: 2rem;
   gap: 0.8rem;
   align-items: center;
+}
+.social-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .cart-logo {
   position: fixed;
@@ -827,7 +866,7 @@ footer {
   position: relative;
 }
 .crossed::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 7.2rem;
@@ -916,17 +955,4 @@ footer {
 .checkbox-box {
   position: relative;
   z-index: 3;
-}
-
-.order-box {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #065f46;
-  padding: 2.4rem 3.2rem;
-}
-.order-text {
-  color: #5ae2bc;
-  font-size: 3.2rem;
 }

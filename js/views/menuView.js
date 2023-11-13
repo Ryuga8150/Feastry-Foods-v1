@@ -1,66 +1,41 @@
+import Toastify from "toastify-js";
+// import "toastify-js/src/toastify.css";
 class MenuView {
-  _parentElement = document.querySelector('.cards');
-  _mealsElement = document.querySelector('.meals');
+  _parentElement = document.querySelector(".cards");
+  _mealsElement = document.querySelector(".meals");
   _cartItems = [];
-  _generateMarkup(data, isWine) {
-    if (isWine)
-      return `
-      <div class="card">
-        <img src="${data.strDrinkThumb}" class="card-img" alt="" />
-        <div class="card-content">
-          <p class="card-title">${data.strDrink}</p>
-          <ul class="card-attributes flex card-flex">
-            <li class="card-attribute">
-              <span>
-                <span class="bold-card-attribute">Glass: </span>${
-                  data.strGlass
-                } min
-              </span>
-            </li>
-            <li class="card-attribute">
-              <span>
-                <span class="bold-card-attribute">Price: </span>$ 10
-              </span>
-            </li>
-            <li class="card-attribute">
-              <span>
-                <span class="bold-card-attribute">Rating: </span>${9}
-              </span>
-            </li>
-          </ul>
-        </div>
-        <button class="btn-AddToCart">Add To Cart</button>
-      </div>
-    `;
+  _generateMarkup(data) {
     return `
       <div class="card">
-        <img src="${data.image}" class="card-img" alt="" />
+        <img src="${data.imageUrl}" class="card-img" alt="" />
         <div class="card-content">
-          <p class="card-title">${data.title}</p>
+          <p class="card-title">${data.name}</p>
           <div class="card-tags">
             <span class="tag tag--vegan ${
-              data.vegan ? '' : 'hidden'
+              data.tags.indexOf("vegan") > -1 ? "" : "hidden"
             }">Vegan</span>
             <span class="tag ${
-              data.vegetarian ? 'tag--vegetarian' : 'tag--vegetarian'
-            }">${data.vegetarian ? 'Veg' : 'Non-Veg'}</span>
+              data.tags.indexOf("vegetarian") > -1
+                ? "tag--vegetarian"
+                : "tag--vegetarian"
+            }">${
+      data.tags.indexOf("vegetarian") > -1 ? "Veg" : "Non-Veg"
+    }</span>
             <span class="tag tag--popular ${
-              data.veryPopular ? '' : 'hidden'
+              data.tags.indexOf("popular") > -1 ? "" : "hidden"
             }">Popular</span>
           </div>
           <ul class="card-attributes flex card-flex">
             <li class="card-attribute">
               <span>
                 <span class="bold-card-attribute">Cook Time: </span>${
-                  data.readyInMinutes
+                  data.cookTime
                 } min
               </span>
             </li>
             <li class="card-attribute">
               <span>
-                <span class="bold-card-attribute">Price: </span>${
-                  data.pricePerServing
-                }
+                <span class="bold-card-attribute">Price: </span>${data.price}
               </span>
             </li>
             <li class="card-attribute">
@@ -77,32 +52,27 @@ class MenuView {
     `;
   }
   _clearParentElement() {
-    this._parentElement.innerHTML = '';
+    this._parentElement.innerHTML = "";
   }
   _renderMenu(data) {
-    console.log(data);
     this._clearParentElement();
     let isWine = 0;
-    let dataArr;
-    if (!data.recipes) {
-      isWine = 1;
-      dataArr = data.drinks;
-    } else {
-      dataArr = data.recipes;
+    let dataArr = data;
+
+    for (let i = 0; i < data.length; ++i) {
+      const html = this._generateMarkup(dataArr[i]);
+      this._parentElement.insertAdjacentHTML("beforeend", html);
     }
-    for (let i = 0; i < 9; ++i) {
-      const html = this._generateMarkup(dataArr[i], isWine);
-      this._parentElement.insertAdjacentHTML('beforeend', html);
-    }
-    //this._handleAddToCartClick();
+    this._handleAddToCartClick();
   }
   _handleAddToCartClick(handler) {
+    console.log("Click handlers added");
     const addToCartBtnElements =
-      this._parentElement.querySelectorAll('.card button');
+      this._parentElement.querySelectorAll(".card button");
     let self = this;
-    //console.log(addToCartBtnElements);
-    addToCartBtnElements.forEach(btnEl => {
-      btnEl.addEventListener('click', function (e) {
+
+    addToCartBtnElements.forEach((btnEl) => {
+      btnEl.addEventListener("click", function (e) {
         self._storeCartItemInfo(this, handler);
       });
     });
@@ -112,26 +82,54 @@ class MenuView {
     const cardContentEl = btnEl.previousElementSibling;
     let item = {};
     item.imageUrl = cardContentEl.previousElementSibling.src;
-    item.name = cardContentEl.querySelector('p').textContent;
-    const el = cardContentEl.querySelector('ul').children[1];
+    item.name = cardContentEl.querySelector("p").textContent;
+    const el = cardContentEl.querySelector("ul").children[1];
     item.price = Number(
-      el.querySelector('span').textContent.trim().split(' ')[1]
+      el.querySelector("span").textContent.trim().split(" ")[1]
     );
     console.log(item);
-    //this._cartItems.push(item);
+    this._cartItems.push(item);
     handler(item);
+    Toastify({
+      text: "Added To Cart",
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "hsla(0, 0%, 20%, 1)",
+
+        background:
+          "radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+        background:
+          "-moz-radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+        background:
+          "-webkit-radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+        filter:
+          "progid: DXImageTransform.Microsoft.gradient( startColorstr=#343434, endColorstr=#1B1B1B, GradientType=1 )",
+        boxShadow: "none",
+        padding: "12px 24px",
+        fontSize: "16px",
+      },
+      onClick: function () {}, // Callback after click
+    }).showToast();
   }
   _setActive(meal) {
-    this._mealsElement.children.forEach(el => {
-      el.classList.remove('meal-active');
+    this._mealsElement.children.forEach((el) => {
+      el.classList.remove("meal-active");
     });
-    meal.classList.add('meal-active');
+    meal.classList.add("meal-active");
   }
   _addHandlerClick(handler) {
     console.log(this._mealsElement);
     let self = this;
-    this._mealsElement.children.forEach(meal => {
-      meal.addEventListener('click', function (e) {
+    this._mealsElement.children.forEach((meal) => {
+      meal.addEventListener("click", function (e) {
         //console.log(this.dataset.point);
         const index = Number(this.dataset.point);
         handler(index);

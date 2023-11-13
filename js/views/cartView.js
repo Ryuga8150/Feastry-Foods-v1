@@ -1,11 +1,14 @@
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
+
 class CartView {
-  _parentElement = document.querySelector('.section-cart');
-  _cartBtnElement = document.querySelector('.cart-logo');
-  _closeBtnElement = document.querySelector('.cartBtn--close-modal');
-  _cardsContainer = document.querySelector('.cart-cards');
-  _totalPriceEl = document.querySelector('.totalPrice');
-  _placeOrderButtonEl = document.querySelector('.place-order-btn');
-  _message = document.querySelector('.order-box');
+  _parentElement = document.querySelector(".section-cart");
+  _cartBtnElement = document.querySelector(".cart-logo");
+  _closeBtnElement = document.querySelector(".cartBtn--close-modal");
+  _cardsContainer = document.querySelector(".cart-cards");
+  _totalPriceEl = document.querySelector(".totalPrice");
+  _placeOrderButtonEl = document.querySelector(".place-order-btn");
+  _message = document.querySelector(".order-box");
   _generateMarkup(item) {
     return `
       <div class="cart-card grid">
@@ -28,65 +31,89 @@ class CartView {
     `;
   }
   _handleButtons() {
-    console.log(document.querySelectorAll('.quantity-btn'));
-    document.querySelectorAll('.quantity-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
+    console.log(document.querySelectorAll(".quantity-btn"));
+    document.querySelectorAll(".quantity-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
         //console.log(this);
         console.log(e.target);
         const targetEl = e.target;
-        if (targetEl.classList.contains('right-btn')) {
-          console.log('Right btn clicked');
+        if (targetEl.classList.contains("right-btn")) {
+          console.log("Right btn clicked");
           let value = Number(targetEl.previousElementSibling.textContent);
           if (value > 1) {
             targetEl.previousElementSibling.textContent = value - 1;
           }
         } else {
-          console.log('Left btn clicked');
+          console.log("Left btn clicked");
           let value = Number(targetEl.nextElementSibling.textContent);
           targetEl.nextElementSibling.textContent = value + 1;
         }
       });
     });
-    console.log(document.querySelectorAll('.checkbox'));
-    document.querySelectorAll('.checkbox').forEach(box => {
-      box.addEventListener('change', e => {
+    console.log(document.querySelectorAll(".checkbox"));
+    document.querySelectorAll(".checkbox").forEach((box) => {
+      box.addEventListener("change", (e) => {
         console.log(e.target);
-        e.target.parentElement.parentElement.classList.toggle('crossed');
+        e.target.parentElement.parentElement.classList.toggle("crossed");
       });
     });
   }
   _renderCart(handler) {
-    this._parentElement.classList.toggle('hidden');
-    this._cartBtnElement.classList.toggle('hidden');
+    this._parentElement.classList.toggle("hidden");
+    this._cartBtnElement.classList.toggle("hidden");
     let items = handler();
     console.log(items);
-    this._cardsContainer.innerHTML = '';
+    this._cardsContainer.innerHTML = "";
     let totalPrice = 0;
-    items.forEach(item => {
+    items.forEach((item) => {
       const html = this._generateMarkup(item);
       totalPrice += item.price;
-      this._cardsContainer.insertAdjacentHTML('beforeend', html);
+      this._cardsContainer.insertAdjacentHTML("beforeend", html);
     });
     this._totalPriceEl.textContent = `$${totalPrice}`;
     //this._handleButtons();
-    this._placeOrderButtonEl.addEventListener('click', e => {
+    this._placeOrderButtonEl.addEventListener("click", (e) => {
       items = [];
       this._closeCart();
-      this._message.classList.toggle('hidden');
-      setTimeout(() => {
-        this._message.classList.toggle('hidden');
-      }, 5000);
+      Toastify({
+        text: "Order Placed",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "hsla(0, 0%, 20%, 1)",
+
+          background:
+            "radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+          background:
+            "-moz-radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+          background:
+            "-webkit-radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+          filter:
+            "progid: DXImageTransform.Microsoft.gradient( startColorstr=#343434, endColorstr=#1B1B1B, GradientType=1 )",
+          boxShadow: "none",
+          padding: "12px 24px",
+          fontSize: "16px",
+        },
+        onClick: function () {}, // Callback after click
+      }).showToast();
     });
   }
   _closeCart() {
-    this._parentElement.classList.toggle('hidden');
-    this._cartBtnElement.classList.toggle('hidden');
+    this._parentElement.classList.toggle("hidden");
+    this._cartBtnElement.classList.toggle("hidden");
   }
   _addHandlerClick(handler) {
-    this._cartBtnElement.addEventListener('click', () => {
+    this._cartBtnElement.addEventListener("click", () => {
       this._renderCart(handler);
     });
-    this._closeBtnElement.addEventListener('click', () => {
+    this._closeBtnElement.addEventListener("click", () => {
       this._closeCart();
     });
   }

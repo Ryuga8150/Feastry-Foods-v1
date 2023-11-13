@@ -3,10 +3,9 @@ class Reviews {
   _reviews = [];
   _currReview = 0;
   self = this;
-  _generateMarkup(review, curr) {
-    console.log("In markup");
+  _generateMarkup(review, curr, isActive) {
     return `
-    <div class="review-card">
+    <div class="review-card ${isActive == 1 ? "active" : ""}">
       <div>
         <h3 class="review-subheading">Rating</h3>
         <div class="star-box flex">
@@ -36,7 +35,8 @@ class Reviews {
       curr = curr % 3;
       let arr = this._reviews[curr];
       //cl(arr, curr);
-      const html = this._generateMarkup(arr, curr);
+
+      const html = this._generateMarkup(arr, curr, cycle);
       this._parentElement.insertAdjacentHTML("beforeend", html);
       cycle++;
       curr++;

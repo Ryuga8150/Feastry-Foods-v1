@@ -1,31 +1,39 @@
-// const APIKEY = `19f4c70dae8849b6a9ac4c49a90606cb`;
-// const mealURL = `https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}&number=9`;
-// const dessertURL = `https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}&number=9&tags=dessert`;
-// const wineURL = `https://api.spoonacular.com/food/wine/recommendation?apiKey=${APIKEY}&number=9&wine=red_wine`;
-// const cocktailUrl = 'https://the-cocktail-db.p.rapidapi.com/popular.php';
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     'X-RapidAPI-Key': '1874d3aeddmshc416996fbd9af9ap12e958jsn0584e3284071',
-//     'X-RapidAPI-Host': 'the-cocktail-db.p.rapidapi.com',
-//   },
-// };
+import menuData from "../../data/menuData";
+
 export const getMenuData = async function (item) {
-  //&tags=vegetarian,vegan,veryPopular
   try {
-    let url;
-    if (item === 0) {
-      url = mealURL;
-    } else if (item === 1) {
-      url = dessertURL;
-    } else {
-      url = cocktailUrl;
-    }
-    const res = await fetch(url);
-    const data = await res.json();
+    let data = menuData[item];
     console.log(data);
     return data;
   } catch (err) {
-    console.log('Error in getting recipes', err);
+    console.log("Error in getting recipes", err);
+    Toastify({
+      text: "Error Fetching Recipes",
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "hsla(0, 0%, 20%, 1)",
+
+        background:
+          "radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+        background:
+          "-moz-radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+        background:
+          "-webkit-radial-gradient(circle, hsla(0, 0%, 20%, 1) 20%, hsla(0, 0%, 11%, 1) 65%)",
+
+        filter:
+          "progid: DXImageTransform.Microsoft.gradient( startColorstr=#343434, endColorstr=#1B1B1B, GradientType=1 )",
+        boxShadow: "none",
+        padding: "12px 24px",
+        fontSize: "16px",
+      },
+      onClick: function () {}, // Callback after click
+    }).showToast();
   }
 };

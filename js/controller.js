@@ -41,7 +41,7 @@ const init = async function () {
   menuView._addHandlerClick(handleMenuData);
   cartView._addHandlerClick(handleCartData);
   reviewView._renderReviews(reviewModel.getReviews);
-  //await handleMenuData();
+  await handleMenuData();
 };
 
 //To clear the Bookings in the Local Storage
